@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 
-export const Timer = ({ time, setTime, instructions, setInstructions }) => {
+export const Timer = ({ time, setTime, breatheInstructions, setBreatheInstructions }) => {
   const handleClick = () => {
     setTime({ ...time, isActive: !time.isActive });
+    setBreatheInstructions({ ...breatheInstructions, instruction: "Breathe In" });
   };
 
   useEffect(() => {
@@ -12,13 +13,10 @@ export const Timer = ({ time, setTime, instructions, setInstructions }) => {
         const secondCounter = time.counter % 60;
         const minuteCounter = Math.floor(time.counter / 60);
 
-        if (instructions.step === 0 && instructions.stepsCounter === 0) {
-          setInstructions({ ...instructions, step: 1, instruction: "Breathe In" });
-        } else if (instructions.step === 1 && instructions.stepsCounter === 4) {
-          setInstructions({ ...instructions, step: 2, instruction: "Hold Your Breathe" });
-        } else if (instructions.step === 2) {
-        }
-        setInstructions({ ...instructions, stepsCounter: (instructions.stepsCounter += 1) });
+        setBreatheInstructions({
+          ...breatheInstructions,
+          stepsCounter: (breatheInstructions.stepsCounter += 1)
+        });
 
         setTime({
           ...time,
@@ -29,7 +27,7 @@ export const Timer = ({ time, setTime, instructions, setInstructions }) => {
       }, 1000);
     }
     return () => clearInterval(intervalId);
-  }, [time, setTime]);
+  }, [time, setTime, breatheInstructions, setBreatheInstructions]);
   return (
     <div>
       {time.minutes}: {time.seconds < 10 ? "0" + time.seconds : time.seconds}
