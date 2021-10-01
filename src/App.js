@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Instructions } from "./features/instructions/Instructions";
-// import { Slider } from "./features/slider/Slider";
+import { Slider } from "./features/slider/Slider";
 import { Timer } from "./features/timer/Timer";
 
 const initialTimeState = { minutes: 0, seconds: 0, isActive: false, counter: 1 };
@@ -8,7 +8,7 @@ const initialInstructionState = {
   step: 0,
   instruction: "",
   stepsCounter: 0,
-  repeatCount: 3,
+  repeatCount: 1,
   cycleCount: 0
 };
 
@@ -31,12 +31,10 @@ function App() {
         breatheInstructions={breatheInstructions}
         setBreatheInstructions={setBreatheInstructions}
       />
-      {/* <Slider
-        min={1}
-        max={4}
+      <Slider
         breatheInstructions={breatheInstructions}
         setBreatheInstructions={setBreatheInstructions}
-      /> */}
+      />
     </div>
   );
 }
