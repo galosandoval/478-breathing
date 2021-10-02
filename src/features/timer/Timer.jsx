@@ -1,6 +1,13 @@
 import React, { useEffect } from "react";
 
-export const Timer = ({ time, setTime, breatheInstructions, setBreatheInstructions }) => {
+export const Timer = ({
+  time,
+  setTime,
+  breatheInstructions,
+  setBreatheInstructions,
+  countdown,
+  setCountdown
+}) => {
   const handleClick = () => {
     setTime({ ...time, isActive: !time.isActive });
     setBreatheInstructions({ ...breatheInstructions, instruction: "Breathe In" });
@@ -24,14 +31,25 @@ export const Timer = ({ time, setTime, breatheInstructions, setBreatheInstructio
           seconds: secondCounter,
           counter: (time.counter += 1)
         });
+
+        if (breatheInstructions.step === 1) {
+          setCountdown({ ...countdown, step1: (countdown.step1 -= 1), step3: 8 });
+        } else if (breatheInstructions.step === 2) {
+          setCountdown({ ...countdown, step1: 4, step2: (countdown.step2 -= 1) });
+        } else {
+          setCountdown({ ...countdown, step2: 7, step3: (countdown.step3 -= 1) });
+        }
       }, 1000);
     }
     return () => clearInterval(intervalId);
-  }, [time, setTime, breatheInstructions, setBreatheInstructions]);
+  }, [time, setTime, breatheInstructions, setBreatheInstructions, setCountdown, countdown]);
   return (
     <div>
       {time.minutes}: {time.seconds < 10 ? "0" + time.seconds : time.seconds}
       <button onClick={handleClick}>Start</button>
+      <div>{countdown.step1}</div>
+      <div>{countdown.step2}</div>
+      <div>{countdown.step3}</div>
     </div>
   );
 };

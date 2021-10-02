@@ -11,10 +11,16 @@ const initialInstructionState = {
   repeatCount: 1,
   cycleCount: 0
 };
+const initialCountdownState = {
+  step1: 4,
+  step2: 7,
+  step3: 8
+};
 
 function App() {
   const [time, setTime] = useState(initialTimeState);
   const [breatheInstructions, setBreatheInstructions] = useState(initialInstructionState);
+  const [countdown, setCountdown] = useState(initialCountdownState);
 
   return (
     <div className="App">
@@ -30,6 +36,7 @@ function App() {
         setTime={setTime}
         breatheInstructions={breatheInstructions}
         setBreatheInstructions={setBreatheInstructions}
+        countdown={countdown} setCountdown={setCountdown}
       />
       <Slider
         breatheInstructions={breatheInstructions}

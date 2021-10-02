@@ -22,33 +22,28 @@ export const Instructions = ({
         });
         if (breatheInstructions.instruction === "Repeat")
           setBreatheInstructions({ ...breatheInstructions, instruction: "Breathe In", step: 1 });
-      }
-      if (stepsCounter === 4 && step === 1) {
+      } else if (stepsCounter === 4 && step === 1) {
         setBreatheInstructions({
           ...breatheInstructions,
           step: 2,
           instruction: "Hold Your Breathe",
           stepsCounter: 0
         });
-      }
-      if (stepsCounter === 7 && step === 2) {
+      } else if (stepsCounter === 7 && step === 2) {
         setBreatheInstructions({
           ...breatheInstructions,
           step: 3,
           instruction: "Breathe Out",
           stepsCounter: 0
         });
-      }
-      if (stepsCounter === 7 && step === 3 && repeatCount > cycleCount) {
+      } else if (stepsCounter === 7 && step === 3 && repeatCount > cycleCount) {
         setBreatheInstructions({
           ...breatheInstructions,
           step: 0,
           stepsCounter: -1,
           instruction: "Repeat"
         });
-      }
-      if (stepsCounter === 8 && step === 3 && repeatCount === cycleCount) {
-        console.log("end");
+      } else if (stepsCounter === 8 && step === 3 && repeatCount === cycleCount) {
         setBreatheInstructions({
           ...breatheInstructions,
           instruction: "End",
@@ -61,7 +56,7 @@ export const Instructions = ({
       console.log(
         "step",
         step,
-        "counter",
+        "stepsCounter:",
         stepsCounter,
         "cycleCount",
         cycleCount,
@@ -69,6 +64,6 @@ export const Instructions = ({
         repeatCount
       );
     }
-  }, [breatheInstructions, setBreatheInstructions, setTime, initialTimeState, time]);
+  }, [time, setBreatheInstructions, breatheInstructions, setTime, initialTimeState]);
   return <div>{breatheInstructions.instruction}</div>;
 };
