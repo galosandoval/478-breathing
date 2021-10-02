@@ -43,14 +43,20 @@ export const Instructions = ({
           stepsCounter: -1,
           instruction: "Repeat"
         });
-      } else if (stepsCounter === 8 && repeatCount === cycleCount) {
-        setBreatheInstructions({ ...breatheInstructions, instruction: "End" });
+      } else if (stepsCounter === 8 && step === 3 && repeatCount === cycleCount) {
+        setBreatheInstructions({
+          ...breatheInstructions,
+          instruction: "End",
+          step: 0,
+          stepsCounter: 0,
+          cycleCount: 0
+        });
         setTime(initialTimeState);
       }
       console.log(
         "step",
         step,
-        "counter",
+        "stepsCounter:",
         stepsCounter,
         "cycleCount",
         cycleCount,
@@ -58,6 +64,6 @@ export const Instructions = ({
         repeatCount
       );
     }
-  }, [breatheInstructions, setBreatheInstructions, setTime, initialTimeState, time]);
+  }, [time, setBreatheInstructions, breatheInstructions, setTime, initialTimeState]);
   return <div>{breatheInstructions.instruction}</div>;
 };

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./slider.css";
 
 export const Slider = ({ breatheInstructions, setBreatheInstructions }) => {
-  const [value, setValue] = useState(1);
-
+  const [value, setValue] = useState(breatheInstructions.repeatCount);
+  // console.log(breatheInstructions.)
   return (
     <div>
       <p>{value}x</p>
@@ -15,7 +15,8 @@ export const Slider = ({ breatheInstructions, setBreatheInstructions }) => {
         className="thumb"
         onChange={(event) => {
           setValue(event.target.value);
-          setBreatheInstructions({ ...breatheInstructions, repeatCount: event.target.value });
+          setBreatheInstructions((state) => ({ ...state, repeatCount: Number(event.target.value) }));
+          console.log("breath isntructions", breatheInstructions);
         }}
       />
       <div className="slider">
