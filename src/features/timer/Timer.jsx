@@ -44,12 +44,13 @@ export const Timer = ({
     return () => clearInterval(intervalId);
   }, [time, setTime, breatheInstructions, setBreatheInstructions, setCountdown, countdown]);
   return (
-    <div>
+    <div className="timer">
       {time.minutes}: {time.seconds < 10 ? "0" + time.seconds : time.seconds}
-      <button onClick={handleClick}>Start</button>
-      <div>{countdown.step1}</div>
-      <div>{countdown.step2}</div>
-      <div>{countdown.step3}</div>
+      {time.isActive ? (
+        <button onClick={handleClick}>Pause</button>
+      ) : (
+        <button onClick={handleClick}>Start</button>
+      )}
     </div>
   );
 };
