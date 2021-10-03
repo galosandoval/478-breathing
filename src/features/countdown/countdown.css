@@ -1,0 +1,82 @@
+.countdown {
+  position: relative;
+  width: 100%;
+}
+.countdown__svg-1 {
+  position: absolute;
+  transform: rotateY(-180deg) rotateZ(-90deg);
+  height: 15em;
+  width: 15em;
+  bottom: -132px;
+  left: -50px;
+  z-index: -1;
+}
+.countdown__circle-1 {
+  stroke-dasharray: 689px;
+  stroke-dashoffset: 0px;
+  stroke-linecap: square;
+  stroke-width: 2px;
+  stroke: black;
+  fill: none;
+  /* animation: countdown-1 5s linear infinite forwards; */
+}
+.countdown__svg-2 {
+  position: absolute;
+  transform: rotateY(-180deg) rotateZ(-90deg);
+  height: 16em;
+  width: 16em;
+  bottom: -141px;
+  left: -58px;
+  z-index: -1;
+}
+.countdown__circle-2 {
+  stroke-dasharray: 752px;
+  stroke-dashoffset: 0px;
+  stroke-linecap: square;
+  stroke-width: 2px;
+  stroke: black;
+  fill: none;
+  
+}
+.countdown__svg-3 {
+  position: absolute;
+  transform: rotateY(-180deg) rotateZ(-90deg);
+  height: 17em;
+  width: 17em;
+  bottom: -143px;
+  left: -70px;
+  z-index: -1;
+}
+.countdown__circle-3 {
+  stroke-dasharray: 815px;
+  stroke-dashoffset: 0px;
+  stroke-linecap: square;
+  stroke-width: 2px;
+  stroke: black;
+  fill: none;
+  /* animation: countdown-3 5s linear infinite forwards; */
+}
+@keyframes countdown-1 {
+  from {
+    stroke-dashoffset: 0px;
+  }
+  to {
+    stroke-dashoffset: 689px;
+  }
+}
+@keyframes countdown-2 {
+  from {
+    stroke-dashoffset: 0px;
+  }
+  to {
+    stroke-dashoffset: 752px;
+  }
+}
+@keyframes countdown-3 {
+  from {
+    stroke-dashoffset: 0px;
+  }
+  to {
+    stroke-dashoffset: 815px;
+  }
+}

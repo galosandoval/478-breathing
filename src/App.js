@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Countdown } from "./features/countdown/Countdown";
 import { Instructions } from "./features/instructions/Instructions";
-import { Slider } from "./features/slider/Slider";
+import { Slider } from "./features/select/Select";
 import { Timer } from "./features/timer/Timer";
 
 import "./App.css";
@@ -35,16 +35,14 @@ function App() {
         countdown={countdown}
         setCountdown={setCountdown}
       />
-      <div className="main">
-        <Countdown countdown={countdown} />
-        <Instructions
-          time={time}
-          initialTimeState={initialTimeState}
-          setTime={setTime}
-          breatheInstructions={breatheInstructions}
-          setBreatheInstructions={setBreatheInstructions}
-        />
-      </div>
+      <Countdown countdown={countdown} />
+      <Instructions
+        time={time}
+        initialTimeState={initialTimeState}
+        setTime={setTime}
+        breatheInstructions={breatheInstructions}
+        setBreatheInstructions={setBreatheInstructions}
+      />
       <Slider
         breatheInstructions={breatheInstructions}
         setBreatheInstructions={setBreatheInstructions}
