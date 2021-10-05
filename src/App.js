@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Countdown } from "./features/countdown/Countdown";
 import { Instructions } from "./features/instructions/Instructions";
-import { Slider } from "./features/select/Select";
+import { Select } from "./features/select/Select";
 import { Timer } from "./features/timer/Timer";
 
 import "./App.css";
@@ -24,30 +24,36 @@ function App() {
   const [time, setTime] = useState(initialTimeState);
   const [breatheInstructions, setBreatheInstructions] = useState(initialInstructionState);
   const [countdown, setCountdown] = useState(initialCountdownState);
-  const [animationPlayState, setAnimationPlayState] = useState("running");
+  const [disabled, setDisabled] = useState(false);
 
   return (
     <div className="App">
       <Timer
-        time={time}
-        setTime={setTime}
         breatheInstructions={breatheInstructions}
-        setBreatheInstructions={setBreatheInstructions}
-        setAnimationPlayState={setAnimationPlayState}
-      />
-      <Countdown countdown={countdown} animationPlayState={animationPlayState} />
-      <Instructions
-        countdown={countdown}
-        setCountdown={setCountdown}
-        time={time}
+        initialCountdownState={initialCountdownState}
+        initialInstructionState={initialInstructionState}
         initialTimeState={initialTimeState}
+        setBreatheInstructions={setBreatheInstructions}
+        setCountDown={setCountdown}
         setTime={setTime}
-        breatheInstructions={breatheInstructions}
-        setBreatheInstructions={setBreatheInstructions}
+        time={time}
+        setDisabled={setDisabled}
       />
-      <Slider
+      <Countdown countdown={countdown} />
+      <Instructions
+        breatheInstructions={breatheInstructions}
+        countdown={countdown}
+        initialTimeState={initialTimeState}
+        setBreatheInstructions={setBreatheInstructions}
+        setCountdown={setCountdown}
+        setDisabled={setDisabled}
+        setTime={setTime}
+        time={time}
+      />
+      <Select
         breatheInstructions={breatheInstructions}
         setBreatheInstructions={setBreatheInstructions}
+        disabled={disabled}
       />
     </div>
   );

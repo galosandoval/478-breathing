@@ -5,63 +5,60 @@
 .countdown__svg-1 {
   position: absolute;
   transform: rotateY(-180deg) rotateZ(-90deg);
-  height: 15em;
-  width: 15em;
-  bottom: -132px;
-  left: -50px;
+  height: 17em;
+  width: 17em;
+  bottom: -134.5px;
+  left: -64px;
   z-index: -1;
 }
 .countdown__circle-1 {
-  stroke-dasharray: 689px;
+  stroke-dasharray: 690px;
   stroke-dashoffset: 0px;
-  stroke-linecap: square;
-  stroke-width: 2px;
-  stroke: black;
+  stroke-linecap: unset;
+  stroke-width: 30px;
+  stroke: #b298dc;
   fill: none;
-  /* animation: countdown-1 5s linear infinite forwards; */
 }
 .countdown__svg-2 {
   position: absolute;
   transform: rotateY(-180deg) rotateZ(-90deg);
-  height: 16em;
-  width: 16em;
-  bottom: -141px;
-  left: -58px;
-  z-index: -1;
+  height: 21em;
+  width: 21em;
+  bottom: -167px;
+  left: -93px;
 }
 .countdown__circle-2 {
-  stroke-dasharray: 752px;
+  stroke-dasharray: 879px;
   stroke-dashoffset: 0px;
-  stroke-linecap: square;
-  stroke-width: 2px;
-  stroke: black;
+  stroke-linecap: unset;
+  stroke-width: 30px;
+  stroke: #a663cc;
   fill: none;
-  
 }
 .countdown__svg-3 {
   position: absolute;
   transform: rotateY(-180deg) rotateZ(-90deg);
-  height: 17em;
-  width: 17em;
-  bottom: -143px;
-  left: -70px;
+  height: 24em;
+  width: 24em;
+  bottom: -190px;
+  left: -112px;
   z-index: -1;
 }
 .countdown__circle-3 {
-  stroke-dasharray: 815px;
+  stroke-dasharray: 1037px;
   stroke-dashoffset: 0px;
-  stroke-linecap: square;
-  stroke-width: 2px;
-  stroke: black;
+  stroke-linecap: unset;
+  stroke-width: 30px;
+  stroke: #6f2dbd;
   fill: none;
-  /* animation: countdown-3 5s linear infinite forwards; */
 }
+
 @keyframes countdown-1 {
   from {
     stroke-dashoffset: 0px;
   }
   to {
-    stroke-dashoffset: 689px;
+    stroke-dashoffset: 690px;
   }
 }
 @keyframes countdown-2 {
@@ -69,7 +66,7 @@
     stroke-dashoffset: 0px;
   }
   to {
-    stroke-dashoffset: 752px;
+    stroke-dashoffset: 879px;
   }
 }
 @keyframes countdown-3 {
@@ -77,6 +74,6 @@
     stroke-dashoffset: 0px;
   }
   to {
-    stroke-dashoffset: 815px;
+    stroke-dashoffset: 1037px;
   }
 }
