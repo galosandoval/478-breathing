@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import './select.css'
 
-export const Slider = ({ breatheInstructions, setBreatheInstructions }) => {
+export const Select = ({ breatheInstructions, setBreatheInstructions, disabled }) => {
   const [value, setValue] = useState(breatheInstructions.repeatCount);
   return (
-    <div>
+    <div className="select">
       <select
+        disabled={disabled}
         value={value}
         onChange={(event) => {
           setValue(event.target.value);

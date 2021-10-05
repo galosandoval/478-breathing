@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
-import "./instructions.css"
+import "./instructions.css";
 // 4, 11, 19, 23, 30, 38, 42
 
 export const Instructions = ({
   breatheInstructions,
-  setBreatheInstructions,
-  setTime,
-  initialTimeState,
-  time,
   countdown,
-  setCountdown
+  initialTimeState,
+  setBreatheInstructions,
+  setCountdown,
+  setDisabled,
+  setTime,
+  time
 }) => {
   useEffect(() => {
     if (time.isActive) {
@@ -73,6 +74,7 @@ export const Instructions = ({
           ...countdown,
           step3: { isActive: false }
         });
+        setDisabled(false);
       }
       console.log(
         "step",

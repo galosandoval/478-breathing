@@ -8,6 +8,7 @@ export const Timer = ({
   initialTimeState,
   setBreatheInstructions,
   setCountDown,
+  setDisabled,
   setTime,
   time
 }) => {
@@ -16,10 +17,12 @@ export const Timer = ({
     if (name === "start") {
       setTime({ ...time, isActive: true });
       setBreatheInstructions({ ...breatheInstructions, instruction: "Breathe In" });
+      setDisabled(true);
     } else if (name === "cancel") {
       setTime(initialTimeState);
       setCountDown(initialCountdownState);
       setBreatheInstructions(initialInstructionState);
+      setDisabled(false);
     }
   };
 

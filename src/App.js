@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Countdown } from "./features/countdown/Countdown";
 import { Instructions } from "./features/instructions/Instructions";
-import { Slider } from "./features/select/Select";
+import { Select } from "./features/select/Select";
 import { Timer } from "./features/timer/Timer";
 
 import "./App.css";
@@ -24,6 +24,7 @@ function App() {
   const [time, setTime] = useState(initialTimeState);
   const [breatheInstructions, setBreatheInstructions] = useState(initialInstructionState);
   const [countdown, setCountdown] = useState(initialCountdownState);
+  const [disabled, setDisabled] = useState(false);
 
   return (
     <div className="App">
@@ -36,6 +37,7 @@ function App() {
         setCountDown={setCountdown}
         setTime={setTime}
         time={time}
+        setDisabled={setDisabled}
       />
       <Countdown countdown={countdown} />
       <Instructions
@@ -44,12 +46,14 @@ function App() {
         initialTimeState={initialTimeState}
         setBreatheInstructions={setBreatheInstructions}
         setCountdown={setCountdown}
+        setDisabled={setDisabled}
         setTime={setTime}
         time={time}
       />
-      <Slider
+      <Select
         breatheInstructions={breatheInstructions}
         setBreatheInstructions={setBreatheInstructions}
+        disabled={disabled}
       />
     </div>
   );
