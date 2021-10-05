@@ -1,16 +1,26 @@
 import React, { useEffect } from "react";
+import "./timer.css";
 
 export const Timer = ({
-  time,
-  setTime,
   breatheInstructions,
+  initialCountdownState,
+  initialInstructionState,
+  initialTimeState,
   setBreatheInstructions,
-  setAnimationPlayState
+  setCountDown,
+  setTime,
+  time
 }) => {
-  const handleClick = () => {
-    setTime({ ...time, isActive: !time.isActive });
-    setBreatheInstructions({ ...breatheInstructions, instruction: "Breathe In" });
-    time.isActive ? setAnimationPlayState("paused") : setAnimationPlayState("running");
+  const handleClick = (event) => {
+    const { name } = event.target;
+    if (name === "start") {
+      setTime({ ...time, isActive: true });
+      setBreatheInstructions({ ...breatheInstructions, instruction: "Breathe In" });
+    } else if (name === "cancel") {
+      setTime(initialTimeState);
+      setCountDown(initialCountdownState);
+      setBreatheInstructions(initialInstructionState);
+    }
   };
 
   useEffect(() => {
@@ -40,11 +50,17 @@ export const Timer = ({
   return (
     <div className="timer">
       {time.minutes}: {time.seconds < 10 ? "0" + time.seconds : time.seconds}
-      {time.isActive ? (
-        <button onClick={handleClick}>Pause</button>
-      ) : (
-        <button onClick={handleClick}>Start</button>
-      )}
+      <div className="timer__button-container">
+        {time.isActive ? (
+          <button className="timer__button" name="cancel" onClick={handleClick}>
+            Cancel
+          </button>
+        ) : (
+          <button className="timer__button" name="start" onClick={handleClick}>
+            Start
+          </button>
+        )}
+      </div>
     </div>
   );
 };

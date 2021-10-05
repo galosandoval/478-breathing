@@ -1,0 +1,17 @@
+.timer {
+  position: relative;
+}
+.timer__button-container {
+  position: absolute;
+  top: 16em;
+  right: -2.6em;
+}
+.timer__button {
+  background-color: #228cdb;
+  width: 7em;
+  height: 7em;
+  border-radius: 100%;
+  border: none;
+  color: #fff;
+font-size: 17px;
+}

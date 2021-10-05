@@ -1,0 +1,5 @@
+.instructions {
+  width: 9em;
+  display: flex;
+  justify-content: center;
+}

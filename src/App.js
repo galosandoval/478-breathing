@@ -24,26 +24,28 @@ function App() {
   const [time, setTime] = useState(initialTimeState);
   const [breatheInstructions, setBreatheInstructions] = useState(initialInstructionState);
   const [countdown, setCountdown] = useState(initialCountdownState);
-  const [animationPlayState, setAnimationPlayState] = useState("running");
 
   return (
     <div className="App">
       <Timer
-        time={time}
-        setTime={setTime}
         breatheInstructions={breatheInstructions}
-        setBreatheInstructions={setBreatheInstructions}
-        setAnimationPlayState={setAnimationPlayState}
-      />
-      <Countdown countdown={countdown} animationPlayState={animationPlayState} />
-      <Instructions
-        countdown={countdown}
-        setCountdown={setCountdown}
-        time={time}
+        initialCountdownState={initialCountdownState}
+        initialInstructionState={initialInstructionState}
         initialTimeState={initialTimeState}
-        setTime={setTime}
-        breatheInstructions={breatheInstructions}
         setBreatheInstructions={setBreatheInstructions}
+        setCountDown={setCountdown}
+        setTime={setTime}
+        time={time}
+      />
+      <Countdown countdown={countdown} />
+      <Instructions
+        breatheInstructions={breatheInstructions}
+        countdown={countdown}
+        initialTimeState={initialTimeState}
+        setBreatheInstructions={setBreatheInstructions}
+        setCountdown={setCountdown}
+        setTime={setTime}
+        time={time}
       />
       <Slider
         breatheInstructions={breatheInstructions}

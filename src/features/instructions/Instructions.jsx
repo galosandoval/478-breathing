@@ -1,6 +1,5 @@
-import React from "react";
-import { useEffect } from "react";
-
+import React, { useEffect } from "react";
+import "./instructions.css"
 // 4, 11, 19, 23, 30, 38, 42
 
 export const Instructions = ({
