@@ -5,12 +5,12 @@ export const Timer = ({
   setTime,
   breatheInstructions,
   setBreatheInstructions,
-  countdown,
-  setCountdown
+  setAnimationPlayState
 }) => {
   const handleClick = () => {
     setTime({ ...time, isActive: !time.isActive });
     setBreatheInstructions({ ...breatheInstructions, instruction: "Breathe In" });
+    time.isActive ? setAnimationPlayState("paused") : setAnimationPlayState("running");
   };
 
   useEffect(() => {
@@ -32,17 +32,11 @@ export const Timer = ({
           counter: (time.counter += 1)
         });
 
-        if (breatheInstructions.step === 1) {
-          setCountdown({ ...countdown, step1: (countdown.step1 -= 1), step3: 8 });
-        } else if (breatheInstructions.step === 2) {
-          setCountdown({ ...countdown, step1: 4, step2: (countdown.step2 -= 1) });
-        } else {
-          setCountdown({ ...countdown, step2: 7, step3: (countdown.step3 -= 1) });
-        }
+        console.log("step", breatheInstructions.step);
       }, 1000);
     }
     return () => clearInterval(intervalId);
-  }, [time, setTime, breatheInstructions, setBreatheInstructions, setCountdown, countdown]);
+  }, [time, setTime, breatheInstructions, setBreatheInstructions]);
   return (
     <div className="timer">
       {time.minutes}: {time.seconds < 10 ? "0" + time.seconds : time.seconds}

@@ -15,15 +15,16 @@ const initialInstructionState = {
   cycleCount: 0
 };
 const initialCountdownState = {
-  step1: 4,
-  step2: 7,
-  step3: 8
+  step1: { isActive: false },
+  step2: { isActive: false },
+  step3: { isActive: false }
 };
 
 function App() {
   const [time, setTime] = useState(initialTimeState);
   const [breatheInstructions, setBreatheInstructions] = useState(initialInstructionState);
   const [countdown, setCountdown] = useState(initialCountdownState);
+  const [animationPlayState, setAnimationPlayState] = useState("running");
 
   return (
     <div className="App">
@@ -32,11 +33,12 @@ function App() {
         setTime={setTime}
         breatheInstructions={breatheInstructions}
         setBreatheInstructions={setBreatheInstructions}
+        setAnimationPlayState={setAnimationPlayState}
+      />
+      <Countdown countdown={countdown} animationPlayState={animationPlayState} />
+      <Instructions
         countdown={countdown}
         setCountdown={setCountdown}
-      />
-      <Countdown countdown={countdown} />
-      <Instructions
         time={time}
         initialTimeState={initialTimeState}
         setTime={setTime}

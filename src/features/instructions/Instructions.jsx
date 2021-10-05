@@ -8,7 +8,9 @@ export const Instructions = ({
   setBreatheInstructions,
   setTime,
   initialTimeState,
-  time
+  time,
+  countdown,
+  setCountdown
 }) => {
   useEffect(() => {
     if (time.isActive) {
@@ -20,14 +22,25 @@ export const Instructions = ({
           step: 1,
           cycleCount: (breatheInstructions.cycleCount += 1)
         });
+        setCountdown({
+          ...countdown,
+          step1: { isActive: true },
+          step3: { isActive: false }
+        });
         if (breatheInstructions.instruction === "Repeat")
           setBreatheInstructions({ ...breatheInstructions, instruction: "Breathe In", step: 1 });
-      } else if (stepsCounter === 4 && step === 1) {
+      }
+      if (stepsCounter === 4 && step === 1) {
         setBreatheInstructions({
           ...breatheInstructions,
           step: 2,
           instruction: "Hold Your Breathe",
           stepsCounter: 0
+        });
+        setCountdown({
+          ...countdown,
+          step1: { isActive: false },
+          step2: { isActive: true }
         });
       } else if (stepsCounter === 7 && step === 2) {
         setBreatheInstructions({
@@ -35,6 +48,11 @@ export const Instructions = ({
           step: 3,
           instruction: "Breathe Out",
           stepsCounter: 0
+        });
+        setCountdown({
+          ...countdown,
+          step2: { isActive: false },
+          step3: { isActive: true }
         });
       } else if (stepsCounter === 7 && step === 3 && repeatCount > cycleCount) {
         setBreatheInstructions({
@@ -52,6 +70,10 @@ export const Instructions = ({
           cycleCount: 0
         });
         setTime(initialTimeState);
+        setCountdown({
+          ...countdown,
+          step3: { isActive: false }
+        });
       }
       console.log(
         "step",
@@ -64,6 +86,18 @@ export const Instructions = ({
         repeatCount
       );
     }
-  }, [time, setBreatheInstructions, breatheInstructions, setTime, initialTimeState]);
-  return <div>{breatheInstructions.instruction}</div>;
+  }, [
+    time,
+    setBreatheInstructions,
+    breatheInstructions,
+    setTime,
+    initialTimeState,
+    countdown,
+    setCountdown
+  ]);
+  return (
+    <div className="instructions">
+      <p className="instructions__p">{breatheInstructions.instruction}</p>
+    </div>
+  );
 };
