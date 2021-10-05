@@ -88,13 +88,14 @@ export const Instructions = ({
       );
     }
   }, [
-    time,
-    setBreatheInstructions,
     breatheInstructions,
-    setTime,
-    initialTimeState,
     countdown,
-    setCountdown
+    initialTimeState,
+    setBreatheInstructions,
+    setCountdown,
+    setDisabled,
+    setTime,
+    time
   ]);
   return (
     <div className="instructions">
