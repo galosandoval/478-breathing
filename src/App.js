@@ -5,6 +5,7 @@ import { Select } from "./features/select/Select";
 import { Timer } from "./features/timer/Timer";
 
 import "./App.css";
+import { Modal } from "./features/modal/Modal";
 
 const initialTimeState = { minutes: 0, seconds: 0, isActive: false, counter: 1 };
 const initialInstructionState = {
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <div className="App">
+      <Modal />
       <Timer
         breatheInstructions={breatheInstructions}
         initialCountdownState={initialCountdownState}

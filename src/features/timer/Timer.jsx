@@ -55,11 +55,11 @@ export const Timer = ({
       {time.minutes}: {time.seconds < 10 ? "0" + time.seconds : time.seconds}
       <div className="timer__button-container">
         {time.isActive ? (
-          <button className="timer__button" name="cancel" onClick={handleClick}>
+          <button className="timer__button button" name="cancel" onClick={handleClick}>
             Cancel
           </button>
         ) : (
-          <button className="timer__button" name="start" onClick={handleClick}>
+          <button className="timer__button button" name="start" onClick={handleClick}>
             Start
           </button>
         )}
