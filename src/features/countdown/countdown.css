@@ -7,8 +7,8 @@
   transform: rotateY(-180deg) rotateZ(-90deg);
   height: 17em;
   width: 17em;
-  bottom: -134.5px;
-  left: -64px;
+  bottom: -135.6px;
+  left: -63.5px;
   z-index: -1;
 }
 .countdown__circle-1 {
@@ -28,10 +28,10 @@
   left: -93px;
 }
 .countdown__circle-2 {
-  stroke-dasharray: 879px;
+  stroke-dasharray: 848px;
   stroke-dashoffset: 0px;
   stroke-linecap: unset;
-  stroke-width: 30px;
+  stroke-width: 30.4px;
   stroke: #a663cc;
   fill: none;
 }
@@ -41,14 +41,14 @@
   height: 24em;
   width: 24em;
   bottom: -190px;
-  left: -112px;
+  left: -112.4px;
   z-index: -1;
 }
 .countdown__circle-3 {
   stroke-dasharray: 1037px;
   stroke-dashoffset: 0px;
   stroke-linecap: unset;
-  stroke-width: 30px;
+  stroke-width: 30.8px;
   stroke: #6f2dbd;
   fill: none;
 }
@@ -66,7 +66,7 @@
     stroke-dashoffset: 0px;
   }
   to {
-    stroke-dashoffset: 879px;
+    stroke-dashoffset: 848px;
   }
 }
 @keyframes countdown-3 {
