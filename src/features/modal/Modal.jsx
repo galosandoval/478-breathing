@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./modal.css";
 
-const initialState = { isDisplayed: false, class: "modal__container" };
+export const Modal = ({ modal, setModal, initialModalState }) => {
+  const [checked, setChecked] = useState(() =>
+    localStorage.getItem("showInstructions") === "false" ? true : false
+  );
 
-export const Modal = () => {
-  const [modal, setModal] = useState(initialState);
-  const [checked, setChecked] = useState(false);
+  console.log("localstorage", localStorage.getItem("showInstructions"));
 
   const handleClick = (event) => {
     const { name } = event.target;
@@ -13,10 +14,11 @@ export const Modal = () => {
       setModal({ class: "modal__container show-modal", isDisplayed: true });
     } else if (name === "close") {
       if (checked) {
-        localStorage.setItem("show-instructions", false);
+        localStorage.setItem("showInstructions", false);
+      } else {
+        localStorage.setItem("showInstructions", true);
       }
-      console.log("hello");
-      setModal(initialState);
+      setModal(initialModalState);
     }
   };
   return (

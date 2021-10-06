@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Countdown } from "./features/countdown/Countdown";
 import { Instructions } from "./features/instructions/Instructions";
 import { Select } from "./features/select/Select";
@@ -20,16 +20,34 @@ const initialCountdownState = {
   step2: { isActive: false },
   step3: { isActive: false }
 };
+const initialModalState = { isDisplayed: false, class: "modal__container" };
 
 function App() {
   const [time, setTime] = useState(initialTimeState);
   const [breatheInstructions, setBreatheInstructions] = useState(initialInstructionState);
   const [countdown, setCountdown] = useState(initialCountdownState);
   const [disabled, setDisabled] = useState(false);
+  const [modal, setModal] = useState(initialModalState);
+
+  useEffect(() => {
+    const showInstructions = "showInstructions";
+    if (localStorage.getItem(showInstructions) === null) {
+      localStorage.setItem(showInstructions, true);
+    }
+    setTimeout(() => {
+      console.log("ls in useEffect", localStorage.getItem(showInstructions));
+      const item = localStorage.getItem("showInstructions");
+      console.log("itim", item);
+      if (item === "true") {
+        console.log("In here");
+        setModal({ class: "modal__container show-modal", isDisplayed: true });
+      }
+    }, 2000);
+  }, []);
 
   return (
     <div className="App">
-      <Modal />
+      <Modal modal={modal} setModal={setModal} initialModalState={initialModalState} />
       <Timer
         breatheInstructions={breatheInstructions}
         initialCountdownState={initialCountdownState}
