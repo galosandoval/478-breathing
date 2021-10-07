@@ -1,11 +1,12 @@
 .modal {
   width: 100%;
   transition: all ease 0.3s;
+  display: flex;
+  justify-content: center;
 }
 .modal__button {
   position: absolute;
-  top: 2em;
-  left: 8.4em;
+  top: 4em;
   background-color: #ff6b35;
 }
 .modal__button:hover {

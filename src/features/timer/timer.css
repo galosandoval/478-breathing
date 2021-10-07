@@ -1,11 +1,13 @@
 .timer {
-  position: relative;
   z-index: 1;
+  display: flex;
+  justify-content: center;
 }
 .timer__button-container {
   position: absolute;
-  top: 16em;
-  right: -2.4em;
+  display: flex;
+  justify-content: center;
+  bottom: 4em;
 }
 .timer__button {
   background-color: #228cdb;
