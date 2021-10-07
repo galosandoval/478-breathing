@@ -1,18 +1,19 @@
 .countdown {
   position: relative;
   width: 100%;
+  left: 126px;
 }
 .countdown__svg-1 {
   position: absolute;
   transform: rotateY(-180deg) rotateZ(-90deg);
   height: 17em;
   width: 17em;
-  bottom: -134.5px;
-  left: -64px;
+  bottom: -155.6px;
+  left: -64.6px;
   z-index: -1;
 }
 .countdown__circle-1 {
-  stroke-dasharray: 690px;
+  stroke-dasharray: 660px;
   stroke-dashoffset: 0px;
   stroke-linecap: unset;
   stroke-width: 30px;
@@ -24,14 +25,15 @@
   transform: rotateY(-180deg) rotateZ(-90deg);
   height: 21em;
   width: 21em;
-  bottom: -167px;
-  left: -93px;
+  bottom: -187.5px;
+  left: -94.5px;
+  z-index: -1;
 }
 .countdown__circle-2 {
-  stroke-dasharray: 879px;
+  stroke-dasharray: 848px;
   stroke-dashoffset: 0px;
   stroke-linecap: unset;
-  stroke-width: 30px;
+  stroke-width: 31.3px;
   stroke: #a663cc;
   fill: none;
 }
@@ -40,15 +42,15 @@
   transform: rotateY(-180deg) rotateZ(-90deg);
   height: 24em;
   width: 24em;
-  bottom: -190px;
-  left: -112px;
+  bottom: -211px;
+  left: -113.4px;
   z-index: -1;
 }
 .countdown__circle-3 {
   stroke-dasharray: 1037px;
   stroke-dashoffset: 0px;
   stroke-linecap: unset;
-  stroke-width: 30px;
+  stroke-width: 31px;
   stroke: #6f2dbd;
   fill: none;
 }
@@ -58,7 +60,7 @@
     stroke-dashoffset: 0px;
   }
   to {
-    stroke-dashoffset: 690px;
+    stroke-dashoffset: 660px;
   }
 }
 @keyframes countdown-2 {
@@ -66,7 +68,7 @@
     stroke-dashoffset: 0px;
   }
   to {
-    stroke-dashoffset: 879px;
+    stroke-dashoffset: 848px;
   }
 }
 @keyframes countdown-3 {
@@ -75,5 +77,11 @@
   }
   to {
     stroke-dashoffset: 1037px;
+  }
+}
+
+@media (max-width: 500px) {
+  .countdown {
+    left: 115px;
   }
 }

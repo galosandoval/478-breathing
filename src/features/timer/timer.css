@@ -1,17 +1,29 @@
 .timer {
-  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
 }
 .timer__button-container {
   position: absolute;
-  top: 16em;
-  right: -2.6em;
+  display: flex;
+  justify-content: center;
+  bottom: 4em;
 }
 .timer__button {
   background-color: #228cdb;
+}
+.button {
   width: 7em;
   height: 7em;
   border-radius: 100%;
   border: none;
   color: #fff;
-font-size: 17px;
+  font-size: 17px;
+  transition: all ease 0.3s;
+  padding: 1em;
+}
+.timer__button:hover {
+  transform: scale(1.03);
+  transition: all ease 0.3s;
+  background-color: #2186d4;
 }

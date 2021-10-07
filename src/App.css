@@ -5,8 +5,16 @@
   align-items: center;
   height: 100vh;
   max-width: 25em;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
 }
 #root {
   display: flex;
   justify-content: center;
+}
+@media (max-width: 500px) {
+  .App {
+    width: none;
+  }
 }
