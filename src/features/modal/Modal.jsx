@@ -27,12 +27,15 @@ export const Modal = ({ modal, setModal, initialModalState }) => {
         ?
       </button>
       <div className={modal.class}>
-        <h2>Instructions</h2>
-        <p>Reduce your stress in less than 2 minutes</p>
+        <h2>What is 4-7-8?</h2>
+        <p>A breathing technique known as </p>
+        <div className="modal__button-container">
+
         <button onClick={handleClick} name="close">
           Got It!
         </button>
-        <br />
+        </div>
+        {/* <br /> */}
         <label>
           <input
             type="checkbox"
