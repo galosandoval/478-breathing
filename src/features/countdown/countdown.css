@@ -11,6 +11,8 @@
   bottom: -155.6px;
   left: -64.6px;
   z-index: -1;
+  opacity: 1;
+  transition: opacity cubic-bezier(0.4, 0, 1, 1) 0.3s;
 }
 .countdown__circle-1 {
   stroke-dasharray: 660px;
@@ -28,6 +30,8 @@
   bottom: -187.5px;
   left: -94.5px;
   z-index: -1;
+  opacity: 1;
+  transition: opacity ease-out 0.3s;
 }
 .countdown__circle-2 {
   stroke-dasharray: 848px;
@@ -45,6 +49,8 @@
   bottom: -211px;
   left: -113.4px;
   z-index: -1;
+  opacity: 1;
+  transition: opacity ease-out 1s;
 }
 .countdown__circle-3 {
   stroke-dasharray: 1037px;
@@ -54,7 +60,10 @@
   stroke: #6f2dbd;
   fill: none;
 }
-
+.hide-countdown {
+  opacity: 0;
+  /* transition: 0.3s ease all; */
+}
 @keyframes countdown-1 {
   from {
     stroke-dashoffset: 0px;

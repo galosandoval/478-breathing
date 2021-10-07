@@ -5,9 +5,11 @@ import "./instructions.css";
 export const Instructions = ({
   breatheInstructions,
   countdown,
+  initialCircleState,
   initialTimeState,
   setBreatheInstructions,
   setCountdown,
+  setCircle,
   setDisabled,
   setTime,
   time
@@ -17,6 +19,16 @@ export const Instructions = ({
       const { stepsCounter, step, repeatCount, cycleCount } = breatheInstructions;
 
       if (stepsCounter === 0 && step === 0) {
+        setTimeout(() => {
+          setCircle((state) => ({
+            ...state,
+            circle1: {
+              ...state.circle1,
+              isVisible: false,
+              class: "countdown__svg-1 hide-countdown"
+            }
+          }));
+        }, 3800);
         setBreatheInstructions({
           ...breatheInstructions,
           step: 1,
@@ -27,10 +39,21 @@ export const Instructions = ({
           step1: { isActive: true },
           step3: { isActive: false }
         });
-        if (breatheInstructions.instruction === "Repeat")
+        if (breatheInstructions.instruction === "Repeat") {
           setBreatheInstructions({ ...breatheInstructions, instruction: "Breathe In", step: 1 });
+        }
       }
       if (stepsCounter === 4 && step === 1) {
+        setTimeout(() => {
+          setCircle((state) => ({
+            ...state,
+            circle2: {
+              ...state.circle2,
+              isVisible: false,
+              class: "countdown__svg-2 hide-countdown"
+            }
+          }));
+        }, 6800);
         setBreatheInstructions({
           ...breatheInstructions,
           step: 2,
@@ -43,6 +66,16 @@ export const Instructions = ({
           step2: { isActive: true }
         });
       } else if (stepsCounter === 7 && step === 2) {
+        setTimeout(() => {
+          setCircle((state) => ({
+            ...state,
+            circle3: {
+              ...state.circle3,
+              isVisible: false,
+              class: "countdown__svg-3 hide-countdown"
+            }
+          }));
+        }, 7300);
         setBreatheInstructions({
           ...breatheInstructions,
           step: 3,
@@ -55,6 +88,7 @@ export const Instructions = ({
           step3: { isActive: true }
         });
       } else if (stepsCounter === 7 && step === 3 && repeatCount > cycleCount) {
+        setCircle(initialCircleState);
         setBreatheInstructions({
           ...breatheInstructions,
           step: 0,
@@ -62,6 +96,7 @@ export const Instructions = ({
           instruction: "Repeat"
         });
       } else if (stepsCounter === 8 && step === 3 && repeatCount === cycleCount) {
+        setCircle(initialCircleState);
         setBreatheInstructions({
           ...breatheInstructions,
           instruction: "End",
@@ -90,9 +125,11 @@ export const Instructions = ({
   }, [
     breatheInstructions,
     countdown,
+    initialCircleState,
     initialTimeState,
     setBreatheInstructions,
     setCountdown,
+    setCircle,
     setDisabled,
     setTime,
     time
