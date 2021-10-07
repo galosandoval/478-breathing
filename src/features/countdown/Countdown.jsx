@@ -2,7 +2,6 @@ import React from "react";
 import "./countdown.css";
 
 export const Countdown = ({ countdown }) => {
-  console.log("countdown", countdown);
   return (
     <div className="countdown">
       <svg className="countdown__svg-1">

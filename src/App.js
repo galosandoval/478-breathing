@@ -29,15 +29,30 @@ function App() {
   const [disabled, setDisabled] = useState(false);
   const [modal, setModal] = useState(initialModalState);
 
+  const handleClick = (event) => {
+    document.addEventListener(
+      "click",
+      (e) => {
+        e = e || window.event;
+        const target = e.target;
+        if (target.id === "root") {
+          setModal(initialModalState);
+        }
+      },
+      false
+    );
+    if (event.target.className === "App") {
+      setModal(initialModalState);
+    }
+  };
+
   useEffect(() => {
     const showInstructions = "showInstructions";
     if (localStorage.getItem(showInstructions) === null) {
       localStorage.setItem(showInstructions, true);
     }
     setTimeout(() => {
-      console.log("ls in useEffect", localStorage.getItem(showInstructions));
       const item = localStorage.getItem("showInstructions");
-      console.log("itim", item);
       if (item === "true") {
         console.log("In here");
         setModal({ class: "modal__container show-modal", isDisplayed: true });
@@ -46,7 +61,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App" onClick={handleClick}>
       <Modal modal={modal} setModal={setModal} initialModalState={initialModalState} />
       <Timer
         breatheInstructions={breatheInstructions}
