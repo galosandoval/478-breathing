@@ -36,6 +36,7 @@ function App() {
   const [disabled, setDisabled] = useState(false);
   const [circle, setCircle] = useState(initialCircleState);
   const [modal, setModal] = useState(initialModalState);
+  const [circleTimeout, setCircleTimeout] = useState(null);
 
   const handleClick = (event) => {
     document.addEventListener(
@@ -62,7 +63,6 @@ function App() {
     setTimeout(() => {
       const item = localStorage.getItem("showInstructions");
       if (item === "true") {
-        console.log("In here");
         setModal({ class: "modal__container show-modal", isDisplayed: true });
       }
     }, 2000);
@@ -70,9 +70,15 @@ function App() {
 
   return (
     <div className="App" onClick={handleClick}>
-      <Modal modal={modal} setModal={setModal} initialModalState={initialModalState} />
+      <Modal
+        disabled={disabled}
+        modal={modal}
+        setModal={setModal}
+        initialModalState={initialModalState}
+      />
       <Timer
         breatheInstructions={breatheInstructions}
+        circleTimeout={circleTimeout}
         countdown={countdown}
         initialCircleState={initialCircleState}
         initialCountdownState={initialCountdownState}
@@ -81,18 +87,20 @@ function App() {
         setBreatheInstructions={setBreatheInstructions}
         setCircle={setCircle}
         setCountDown={setCountdown}
+        setDisabled={setDisabled}
         setTime={setTime}
         time={time}
-        setDisabled={setDisabled}
       />
       <Countdown countdown={countdown} circle={circle} setCircle={setCircle} />
       <Instructions
         breatheInstructions={breatheInstructions}
         countdown={countdown}
         initialCircleState={initialCircleState}
+        initialCountdownState={initialCountdownState}
         initialTimeState={initialTimeState}
         setBreatheInstructions={setBreatheInstructions}
         setCircle={setCircle}
+        setCircleTimeout={setCircleTimeout}
         setCountdown={setCountdown}
         setDisabled={setDisabled}
         setTime={setTime}
@@ -100,8 +108,8 @@ function App() {
       />
       <Select
         breatheInstructions={breatheInstructions}
-        setBreatheInstructions={setBreatheInstructions}
         disabled={disabled}
+        setBreatheInstructions={setBreatheInstructions}
       />
     </div>
   );

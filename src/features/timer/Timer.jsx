@@ -13,6 +13,7 @@ export const Timer = ({
   setCountDown,
   setDisabled,
   setTime,
+  circleTimeout,
   time
 }) => {
   const handleClick = (event) => {
@@ -27,12 +28,13 @@ export const Timer = ({
       setBreatheInstructions(initialInstructionState);
       setDisabled(false);
       setCircle(initialCircleState);
+      clearTimeout(circleTimeout);
     }
   };
 
   useEffect(() => {
     let intervalId;
-    if (time.isActive) {
+    if (time.isActive && countdown.step0.ranOnce) {
       intervalId = setInterval(() => {
         const secondCounter = time.counter % 60;
         const minuteCounter = Math.floor(time.counter / 60);
@@ -51,7 +53,7 @@ export const Timer = ({
       }, 1000);
     }
     return () => clearInterval(intervalId);
-  }, [time, setTime, breatheInstructions, setBreatheInstructions]);
+  }, [time, setTime, breatheInstructions, setBreatheInstructions, countdown.step0.ranOnce]);
   return (
     <div className="timer">
       {time.minutes}: {time.seconds < 10 ? "0" + time.seconds : time.seconds}
