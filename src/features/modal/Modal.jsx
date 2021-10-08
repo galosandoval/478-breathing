@@ -6,7 +6,6 @@ export const Modal = ({ modal, setModal, initialModalState }) => {
     localStorage.getItem("showInstructions") === "false" ? true : false
   );
 
-  console.log("localstorage", localStorage.getItem("showInstructions"));
 
   const handleClick = (event) => {
     const { name } = event.target;
@@ -22,21 +21,43 @@ export const Modal = ({ modal, setModal, initialModalState }) => {
     }
   };
   return (
-    <div className="modal">
+    <div className="modal" onClick={handleClick}>
       <button name="open" onClick={handleClick} className="modal__button button">
         ?
       </button>
       <div className={modal.class}>
-        <h2>What is 4-7-8?</h2>
-        <p>A breathing technique known as </p>
+        <div className="modal__title">
+          <h2 className="modal__h2">4 - 7 - 8</h2>
+        </div>
+        <p>
+          A breathing technique known as "relaxing breath," airms to reduce anxiety or help people
+          sleep more quickly. More info at{" "}
+          <a
+            href="https://www.medicalnewstoday.com/articles/324417"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Medical News Today
+          </a>
+          .
+        </p>
+        <ol className="modal__ol">
+          <li className="modal__li">empty your lungs of air</li>
+          <li className="modal__li">breathe in quietly through your nose for 4 seconds</li>
+          <li className="modal__li">hold your breath for a count of 7 seconds</li>
+          <li className="modal__li">
+            exhale forcefully through the mouth, pursing the lips and making a "whoosh" sound for 8
+            seconds
+          </li>
+          <li className="modal__li">repeat the cycle up to 4 times</li>
+        </ol>
         <div className="modal__button-container">
-
-        <button onClick={handleClick} name="close">
-          Got It!
-        </button>
+          <button className="modal__button-close button" onClick={handleClick} name="close">
+            Got It!
+          </button>
         </div>
         {/* <br /> */}
-        <label>
+        <label className="modal__label">
           <input
             type="checkbox"
             checked={checked}

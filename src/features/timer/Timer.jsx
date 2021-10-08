@@ -3,10 +3,13 @@ import "./timer.css";
 
 export const Timer = ({
   breatheInstructions,
+  countdown,
+  initialCircleState,
   initialCountdownState,
   initialInstructionState,
   initialTimeState,
   setBreatheInstructions,
+  setCircle,
   setCountDown,
   setDisabled,
   setTime,
@@ -16,13 +19,14 @@ export const Timer = ({
     const { name } = event.target;
     if (name === "start") {
       setTime({ ...time, isActive: true });
-      setBreatheInstructions({ ...breatheInstructions, instruction: "Breathe In" });
+      setBreatheInstructions({ ...breatheInstructions, instruction: "Empty Your Lungs" });
       setDisabled(true);
     } else if (name === "cancel") {
       setTime(initialTimeState);
       setCountDown(initialCountdownState);
       setBreatheInstructions(initialInstructionState);
       setDisabled(false);
+      setCircle(initialCircleState);
     }
   };
 
@@ -44,8 +48,6 @@ export const Timer = ({
           seconds: secondCounter,
           counter: (time.counter += 1)
         });
-
-        console.log("step", breatheInstructions.step);
       }, 1000);
     }
     return () => clearInterval(intervalId);
@@ -54,7 +56,7 @@ export const Timer = ({
     <div className="timer">
       {time.minutes}: {time.seconds < 10 ? "0" + time.seconds : time.seconds}
       <div className="timer__button-container">
-        {time.isActive ? (
+        {time.isActive || countdown.step0.ranOnce ? (
           <button className="timer__button button" name="cancel" onClick={handleClick}>
             Cancel
           </button>

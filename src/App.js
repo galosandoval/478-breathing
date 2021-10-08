@@ -16,18 +16,43 @@ const initialInstructionState = {
   cycleCount: 0
 };
 const initialCountdownState = {
+  step0: { isActive: false, ranOnce: false },
   step1: { isActive: false },
   step2: { isActive: false },
   step3: { isActive: false }
 };
 const initialModalState = { isDisplayed: false, class: "modal__container" };
+const initialCircleState = {
+  circle0: { class: "countdown__svg-0", isVisible: true },
+  circle1: { class: "countdown__svg-1", isVisible: true },
+  circle2: { class: "countdown__svg-2", isVisible: true },
+  circle3: { class: "countdown__svg-3", isVisible: true }
+};
 
 function App() {
   const [time, setTime] = useState(initialTimeState);
   const [breatheInstructions, setBreatheInstructions] = useState(initialInstructionState);
   const [countdown, setCountdown] = useState(initialCountdownState);
   const [disabled, setDisabled] = useState(false);
+  const [circle, setCircle] = useState(initialCircleState);
   const [modal, setModal] = useState(initialModalState);
+
+  const handleClick = (event) => {
+    document.addEventListener(
+      "click",
+      (e) => {
+        e = e || window.event;
+        const target = e.target;
+        if (target.id === "root") {
+          setModal(initialModalState);
+        }
+      },
+      false
+    );
+    if (event.target.className === "App") {
+      setModal(initialModalState);
+    }
+  };
 
   useEffect(() => {
     const showInstructions = "showInstructions";
@@ -35,9 +60,7 @@ function App() {
       localStorage.setItem(showInstructions, true);
     }
     setTimeout(() => {
-      console.log("ls in useEffect", localStorage.getItem(showInstructions));
       const item = localStorage.getItem("showInstructions");
-      console.log("itim", item);
       if (item === "true") {
         console.log("In here");
         setModal({ class: "modal__container show-modal", isDisplayed: true });
@@ -46,25 +69,30 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App" onClick={handleClick}>
       <Modal modal={modal} setModal={setModal} initialModalState={initialModalState} />
       <Timer
         breatheInstructions={breatheInstructions}
+        countdown={countdown}
+        initialCircleState={initialCircleState}
         initialCountdownState={initialCountdownState}
         initialInstructionState={initialInstructionState}
         initialTimeState={initialTimeState}
         setBreatheInstructions={setBreatheInstructions}
+        setCircle={setCircle}
         setCountDown={setCountdown}
         setTime={setTime}
         time={time}
         setDisabled={setDisabled}
       />
-      <Countdown countdown={countdown} />
+      <Countdown countdown={countdown} circle={circle} setCircle={setCircle} />
       <Instructions
         breatheInstructions={breatheInstructions}
         countdown={countdown}
+        initialCircleState={initialCircleState}
         initialTimeState={initialTimeState}
         setBreatheInstructions={setBreatheInstructions}
+        setCircle={setCircle}
         setCountdown={setCountdown}
         setDisabled={setDisabled}
         setTime={setTime}
