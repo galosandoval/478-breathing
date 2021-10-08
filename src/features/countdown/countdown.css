@@ -113,9 +113,3 @@
     stroke-dashoffset: 1037px;
   }
 }
-
-@media (max-width: 500px) {
-  .countdown {
-    left: 115px;
-  }
-}
