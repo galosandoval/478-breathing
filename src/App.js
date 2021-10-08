@@ -16,12 +16,14 @@ const initialInstructionState = {
   cycleCount: 0
 };
 const initialCountdownState = {
+  step0: { isActive: false, ranOnce: false },
   step1: { isActive: false },
   step2: { isActive: false },
   step3: { isActive: false }
 };
 const initialModalState = { isDisplayed: false, class: "modal__container" };
 const initialCircleState = {
+  circle0: { class: "countdown__svg-0", isVisible: true },
   circle1: { class: "countdown__svg-1", isVisible: true },
   circle2: { class: "countdown__svg-2", isVisible: true },
   circle3: { class: "countdown__svg-3", isVisible: true }
@@ -32,8 +34,8 @@ function App() {
   const [breatheInstructions, setBreatheInstructions] = useState(initialInstructionState);
   const [countdown, setCountdown] = useState(initialCountdownState);
   const [disabled, setDisabled] = useState(false);
-  const [modal, setModal] = useState(initialModalState);
   const [circle, setCircle] = useState(initialCircleState);
+  const [modal, setModal] = useState(initialModalState);
 
   const handleClick = (event) => {
     document.addEventListener(
@@ -71,10 +73,13 @@ function App() {
       <Modal modal={modal} setModal={setModal} initialModalState={initialModalState} />
       <Timer
         breatheInstructions={breatheInstructions}
+        countdown={countdown}
+        initialCircleState={initialCircleState}
         initialCountdownState={initialCountdownState}
         initialInstructionState={initialInstructionState}
         initialTimeState={initialTimeState}
         setBreatheInstructions={setBreatheInstructions}
+        setCircle={setCircle}
         setCountDown={setCountdown}
         setTime={setTime}
         time={time}

@@ -6,7 +6,6 @@ export const Modal = ({ modal, setModal, initialModalState }) => {
     localStorage.getItem("showInstructions") === "false" ? true : false
   );
 
-  console.log("localstorage", localStorage.getItem("showInstructions"));
 
   const handleClick = (event) => {
     const { name } = event.target;
