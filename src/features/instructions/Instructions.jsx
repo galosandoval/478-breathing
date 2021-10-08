@@ -59,7 +59,6 @@ export const Instructions = ({
           });
           // Finish
         } else if (stepsCounter === 8 && step === 3 && repeatCount === cycleCount) {
-          console.log("here");
           setCircle(initialCircleState);
           setBreatheInstructions({
             ...breatheInstructions,

@@ -6,7 +6,6 @@ export const Modal = ({ modal, setModal, initialModalState, disabled }) => {
     localStorage.getItem("showInstructions") === "false" ? true : false
   );
 
-
   const handleClick = (event) => {
     const { name } = event.target;
     if (name === "open") {
@@ -22,7 +21,12 @@ export const Modal = ({ modal, setModal, initialModalState, disabled }) => {
   };
   return (
     <div className="modal" onClick={handleClick}>
-      <button disabled={disabled} name="open" onClick={handleClick} className="modal__button button">
+      <button
+        disabled={disabled}
+        name="open"
+        onClick={handleClick}
+        className="modal__button button"
+      >
         ?
       </button>
       <div className={modal.class}>

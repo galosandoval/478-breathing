@@ -63,7 +63,6 @@ function App() {
     setTimeout(() => {
       const item = localStorage.getItem("showInstructions");
       if (item === "true") {
-        console.log("In here");
         setModal({ class: "modal__container show-modal", isDisplayed: true });
       }
     }, 2000);
