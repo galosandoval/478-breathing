@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+
 import { Countdown } from "./features/countdown/Countdown";
 import { Instructions } from "./features/instructions/Instructions";
 import { Select } from "./features/select/Select";
 import { Timer } from "./features/timer/Timer";
-
-import "./App.css";
 import { Modal } from "./features/modal/Modal";
+import "./App.css";
+
 
 const initialTimeState = { minutes: 0, seconds: 0, isActive: false, counter: 1 };
 const initialInstructionState = {
