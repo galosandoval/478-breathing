@@ -6,7 +6,7 @@
 }
 .modal__button {
   position: absolute;
-  top: 4em;
+  top: 3em;
   background-color: #ff6b35;
 }
 .modal__button:hover {
