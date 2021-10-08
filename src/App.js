@@ -36,6 +36,7 @@ function App() {
   const [disabled, setDisabled] = useState(false);
   const [circle, setCircle] = useState(initialCircleState);
   const [modal, setModal] = useState(initialModalState);
+  const [circleTimeout, setCircleTimeout] = useState(null);
 
   const handleClick = (event) => {
     document.addEventListener(
@@ -74,6 +75,7 @@ function App() {
       <Timer
         breatheInstructions={breatheInstructions}
         countdown={countdown}
+        circleTimeout={circleTimeout}
         initialCircleState={initialCircleState}
         initialCountdownState={initialCountdownState}
         initialInstructionState={initialInstructionState}
@@ -89,6 +91,7 @@ function App() {
       <Instructions
         breatheInstructions={breatheInstructions}
         countdown={countdown}
+        clearTimeout={clearTimeout}
         initialCircleState={initialCircleState}
         initialTimeState={initialTimeState}
         setBreatheInstructions={setBreatheInstructions}
@@ -96,6 +99,7 @@ function App() {
         setCountdown={setCountdown}
         setDisabled={setDisabled}
         setTime={setTime}
+        setCircleTimeout={setCircleTimeout}
         time={time}
       />
       <Select

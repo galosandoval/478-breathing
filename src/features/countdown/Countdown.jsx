@@ -7,7 +7,7 @@ export const Countdown = ({ countdown, circle }) => {
       <svg className={circle.circle0.class}>
         <circle
           style={{
-            animation: countdown.step0.isActive ? `countdown-0 3000ms linear` : "none"
+            animation: countdown.step0.isActive ? "countdown-0 3000ms linear forwards" : "none"
           }}
           className="countdown__circle-0"
           r="84"
@@ -18,7 +18,7 @@ export const Countdown = ({ countdown, circle }) => {
       <svg className={circle.circle1.class}>
         <circle
           style={{
-            animation: countdown.step1.isActive ? `countdown-1 4000ms linear` : "none"
+            animation: countdown.step1.isActive ? "countdown-1 4000ms linear forwards" : "none"
           }}
           className="countdown__circle-1"
           r="105"
@@ -29,7 +29,7 @@ export const Countdown = ({ countdown, circle }) => {
       <svg className={circle.circle2.class}>
         <circle
           style={{
-            animation: countdown.step2.isActive ? `countdown-2 7000ms 1 linear forwards` : "none"
+            animation: countdown.step2.isActive ? "countdown-2 7000ms linear forwards" : "none"
           }}
           className="countdown__circle-2"
           r="135"
@@ -40,7 +40,7 @@ export const Countdown = ({ countdown, circle }) => {
       <svg className={circle.circle3.class}>
         <circle
           style={{
-            animation: countdown.step3.isActive ? `countdown-3 8000ms linear forwards` : "none"
+            animation: countdown.step3.isActive ? "countdown-3 8000ms linear forwards" : "none"
           }}
           className="countdown__circle-3"
           r="165"
