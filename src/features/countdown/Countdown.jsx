@@ -7,7 +7,7 @@ export const Countdown = ({ countdown, circle }) => {
       <svg className={circle.circle0.class}>
         <circle
           style={{
-            animation: countdown.step0.isActive ? "countdown-0 3000ms linear forwards" : "none"
+            animation: countdown.step0.isActive ? "countdown-0 3000ms linear" : "none"
           }}
           className="countdown__circle-0"
           r="84"

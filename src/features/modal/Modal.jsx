@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./modal.css";
 
-export const Modal = ({ modal, setModal, initialModalState }) => {
+export const Modal = ({ modal, setModal, initialModalState, disabled }) => {
   const [checked, setChecked] = useState(() =>
     localStorage.getItem("showInstructions") === "false" ? true : false
   );
@@ -22,7 +22,7 @@ export const Modal = ({ modal, setModal, initialModalState }) => {
   };
   return (
     <div className="modal" onClick={handleClick}>
-      <button name="open" onClick={handleClick} className="modal__button button">
+      <button disabled={disabled} name="open" onClick={handleClick} className="modal__button button">
         ?
       </button>
       <div className={modal.class}>

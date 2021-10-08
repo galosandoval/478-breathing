@@ -1,21 +1,23 @@
 export const startStep0 = (setCountdown, setCircle, countdown, setCircleTimeout) => {
-  if (!countdown.step0.isActive)
+  if (!countdown.step0.isActive) {
     setCountdown((state) => ({ ...state, step0: { ...state.step0, isActive: true } }));
-  const clearCircle = setTimeout(() => {
-    setCircle((state) => ({
-      ...state,
-      circle0: {
-        ...state.circle0,
-        isVisible: false,
-        class: "countdown__svg-0 hide-countdown"
-      }
-    }));
-    setCountdown((state) => ({ ...state, step0: { ...state.step0, ranOnce: true } }));
-  }, 3000);
-  setCircleTimeout(clearCircle);
+    const clearCircle = setTimeout(() => {
+      setCircle((state) => ({
+        ...state,
+        circle0: {
+          ...state.circle0,
+          isVisible: false,
+          class: "countdown__svg-0 hide-countdown"
+        }
+      }));
+      setCountdown((state) => ({ ...state, step0: { ...state.step0, ranOnce: true } }));
+    }, 3000);
+    setCircleTimeout(clearCircle);
+  }
 };
 
 export const startStep1 = (
+  breatheInstructions,
   setBreatheInstructions,
   setCountdown,
   countdown,
@@ -27,12 +29,12 @@ export const startStep1 = (
   step
 ) => {
   if (stepsCounter === 0 && step === 0) {
-    setBreatheInstructions((state) => ({
-      ...state,
+    setBreatheInstructions({
+      ...breatheInstructions,
       step: 1,
-      cycleCount: (state.cycleCount += 1),
+      cycleCount: (breatheInstructions.cycleCount += 1),
       instruction: "Breathe In"
-    }));
+    });
     setCountdown({
       ...countdown,
       step0: { ...countdown.step0, isActive: false },
@@ -49,7 +51,6 @@ export const startStep1 = (
         }
       }));
     }, 3700);
-    console.log("clearCircle", clearCircle);
     setCircleTimeout(clearCircle);
     if (instruction === "Repeat") {
       setBreatheInstructions((state) => ({ ...state, instruction: "Breathe In", step: 1 }));

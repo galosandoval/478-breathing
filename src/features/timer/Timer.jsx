@@ -28,7 +28,6 @@ export const Timer = ({
       setBreatheInstructions(initialInstructionState);
       setDisabled(false);
       setCircle(initialCircleState);
-      console.log("circleTimeout", circleTimeout);
       clearTimeout(circleTimeout);
     }
   };

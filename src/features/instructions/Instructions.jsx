@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 import { startStep0, startStep1, startStep2, startStep3 } from "../utils/steps";
 import "./instructions.css";
 
@@ -6,16 +6,17 @@ export const Instructions = ({
   breatheInstructions,
   countdown,
   initialCircleState,
+  initialCountdownState,
   initialTimeState,
   setBreatheInstructions,
-  setCountdown,
-  setCircleTimeout,
   setCircle,
+  setCircleTimeout,
+  setCountdown,
   setDisabled,
   setTime,
   time
 }) => {
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (time.isActive) {
       if (!countdown.step0.ranOnce) {
         startStep0(setCountdown, setCircle, countdown, setCircleTimeout);
@@ -24,6 +25,7 @@ export const Instructions = ({
 
         if (stepsCounter === 0 && step === 0) {
           startStep1(
+            breatheInstructions,
             setBreatheInstructions,
             setCountdown,
             countdown,
@@ -57,6 +59,7 @@ export const Instructions = ({
           });
           // Finish
         } else if (stepsCounter === 8 && step === 3 && repeatCount === cycleCount) {
+          console.log("here");
           setCircle(initialCircleState);
           setBreatheInstructions({
             ...breatheInstructions,
@@ -66,11 +69,7 @@ export const Instructions = ({
             cycleCount: 0
           });
           setTime(initialTimeState);
-          setCountdown({
-            ...countdown,
-            step3: { isActive: false },
-            step0: { ranOnce: false, isActive: false }
-          });
+          setCountdown(initialCountdownState);
           setDisabled(false);
         }
       }
@@ -79,13 +78,14 @@ export const Instructions = ({
     breatheInstructions,
     countdown,
     initialCircleState,
+    initialCountdownState,
     initialTimeState,
     setBreatheInstructions,
-    setCountdown,
     setCircle,
+    setCircleTimeout,
+    setCountdown,
     setDisabled,
     setTime,
-    setCircleTimeout,
     time
   ]);
   return (

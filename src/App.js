@@ -71,11 +71,16 @@ function App() {
 
   return (
     <div className="App" onClick={handleClick}>
-      <Modal modal={modal} setModal={setModal} initialModalState={initialModalState} />
+      <Modal
+        disabled={disabled}
+        modal={modal}
+        setModal={setModal}
+        initialModalState={initialModalState}
+      />
       <Timer
         breatheInstructions={breatheInstructions}
-        countdown={countdown}
         circleTimeout={circleTimeout}
+        countdown={countdown}
         initialCircleState={initialCircleState}
         initialCountdownState={initialCountdownState}
         initialInstructionState={initialInstructionState}
@@ -83,29 +88,29 @@ function App() {
         setBreatheInstructions={setBreatheInstructions}
         setCircle={setCircle}
         setCountDown={setCountdown}
+        setDisabled={setDisabled}
         setTime={setTime}
         time={time}
-        setDisabled={setDisabled}
       />
       <Countdown countdown={countdown} circle={circle} setCircle={setCircle} />
       <Instructions
         breatheInstructions={breatheInstructions}
         countdown={countdown}
-        clearTimeout={clearTimeout}
         initialCircleState={initialCircleState}
+        initialCountdownState={initialCountdownState}
         initialTimeState={initialTimeState}
         setBreatheInstructions={setBreatheInstructions}
         setCircle={setCircle}
+        setCircleTimeout={setCircleTimeout}
         setCountdown={setCountdown}
         setDisabled={setDisabled}
         setTime={setTime}
-        setCircleTimeout={setCircleTimeout}
         time={time}
       />
       <Select
         breatheInstructions={breatheInstructions}
-        setBreatheInstructions={setBreatheInstructions}
         disabled={disabled}
+        setBreatheInstructions={setBreatheInstructions}
       />
     </div>
   );
