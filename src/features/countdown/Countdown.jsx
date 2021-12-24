@@ -1,11 +1,12 @@
 import React from "react";
 import "./countdown.css";
+import { CountdownStyles } from "./Countdown.styles";
 
 export const Countdown = ({ countdown, circle }) => {
   const animation = (countdown, time) => `countdown-${countdown} ${time}ms linear forwards`;
 
   return (
-    <div className="countdown">
+    <CountdownStyles>
       <svg className={circle.circle0.class}>
         <circle
           style={{
@@ -50,6 +51,6 @@ export const Countdown = ({ countdown, circle }) => {
           cy="198"
         ></circle>
       </svg>
-    </div>
+    </CountdownStyles>
   );
 };

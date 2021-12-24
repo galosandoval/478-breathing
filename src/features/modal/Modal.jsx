@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./modal.css";
+import { CloseButton, ModalButton, ModalStyles } from "./Modal.styles";
 
 export const Modal = ({ modal, setModal, initialModalState, disabled }) => {
   const [checked, setChecked] = useState(() =>
@@ -20,15 +20,10 @@ export const Modal = ({ modal, setModal, initialModalState, disabled }) => {
     }
   };
   return (
-    <div className="modal" onClick={handleClick}>
-      <button
-        disabled={disabled}
-        name="open"
-        onClick={handleClick}
-        className="modal__button button"
-      >
+    <ModalStyles onClick={handleClick}>
+      <ModalButton disabled={disabled} name="open" onClick={handleClick}>
         ?
-      </button>
+      </ModalButton>
       <div className={modal.class}>
         <div className="modal__title">
           <h2 className="modal__h2">4 - 7 - 8</h2>
@@ -56,9 +51,9 @@ export const Modal = ({ modal, setModal, initialModalState, disabled }) => {
           <li className="modal__li">repeat the cycle up to 4 times</li>
         </ol>
         <div className="modal__button-container">
-          <button className="modal__button-close button" onClick={handleClick} name="close">
+          <CloseButton onClick={handleClick} name="close">
             Got It!
-          </button>
+          </CloseButton>
         </div>
         {/* <br /> */}
         <label className="modal__label">
@@ -70,6 +65,6 @@ export const Modal = ({ modal, setModal, initialModalState, disabled }) => {
           Don't show me this again
         </label>
       </div>
-    </div>
+    </ModalStyles>
   );
 };
