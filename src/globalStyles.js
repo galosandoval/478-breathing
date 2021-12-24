@@ -1,4 +1,7 @@
-/* Box sizing rules */
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyles = createGlobalStyle`
+  /* Box sizing rules */
 *,
 *::before,
 *::after {
@@ -36,8 +39,8 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   font-family: "Montserrat", sans-serif;
-  /* font-family: 'Noto Sans Display', sans-serif; */
-  /* font-size: 62.5%; */
+  background-color: black;
+  color: white;
 }
 
 /* A elements that don't have a class get default styles */
@@ -75,3 +78,5 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+`;

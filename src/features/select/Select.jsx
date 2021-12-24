@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import './select.css'
+import { SelectStyles } from "./Select.styles";
 
 export const Select = ({ breatheInstructions, setBreatheInstructions, disabled }) => {
   const [value, setValue] = useState(breatheInstructions.repeatCount);
   return (
-    <div className="select">
+    <SelectStyles className="select">
       <select
         disabled={disabled}
         value={value}
@@ -23,6 +23,6 @@ export const Select = ({ breatheInstructions, setBreatheInstructions, disabled }
         <option value={3}>3x</option>
         <option value={4}>4x</option>
       </select>
-    </div>
+    </SelectStyles>
   );
 };

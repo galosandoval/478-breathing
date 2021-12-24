@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./timer.css";
+import { TimerButton, TimerStyles } from "./Timer.styles";
 
 export const Timer = ({
   breatheInstructions,
@@ -55,19 +55,19 @@ export const Timer = ({
     return () => clearInterval(intervalId);
   }, [time, setTime, breatheInstructions, setBreatheInstructions, countdown.step0.ranOnce]);
   return (
-    <div className="timer">
+    <TimerStyles>
       {time.minutes}: {time.seconds < 10 ? "0" + time.seconds : time.seconds}
       <div className="timer__button-container">
         {time.isActive || countdown.step0.ranOnce ? (
-          <button className="timer__button button" name="cancel" onClick={handleClick}>
+          <TimerButton name="cancel" onClick={handleClick}>
             Cancel
-          </button>
+          </TimerButton>
         ) : (
-          <button className="timer__button button" name="start" onClick={handleClick}>
+          <TimerButton name="start" onClick={handleClick}>
             Start
-          </button>
+          </TimerButton>
         )}
       </div>
-    </div>
+    </TimerStyles>
   );
 };

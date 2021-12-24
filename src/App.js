@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 
+import { GlobalStyles } from "./globalStyles";
 import { Countdown } from "./features/countdown/Countdown";
 import { Instructions } from "./features/instructions/Instructions";
 import { Select } from "./features/select/Select";
 import { Timer } from "./features/timer/Timer";
 import { Modal } from "./features/modal/Modal";
-import "./App.css";
-
 
 const initialTimeState = { minutes: 0, seconds: 0, isActive: false, counter: 1 };
 const initialInstructionState = {
   step: 0,
   instruction: "Hit Start When Ready",
   stepsCounter: 0,
-  repeatCount: 1,
+  repeatCount: 4,
   cycleCount: 0
 };
 const initialCountdownState = {
@@ -29,6 +29,19 @@ const initialCircleState = {
   circle2: { class: "countdown__svg-2", isVisible: true },
   circle3: { class: "countdown__svg-3", isVisible: true }
 };
+
+const AppStyles = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  max-width: 25em;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+`;
 
 function App() {
   const [time, setTime] = useState(initialTimeState);
@@ -66,11 +79,12 @@ function App() {
       if (item === "true") {
         setModal({ class: "modal__container show-modal", isDisplayed: true });
       }
-    }, 2000);
+    }, 5000);
   }, []);
 
   return (
-    <div className="App" onClick={handleClick}>
+    <AppStyles className="App" onClick={handleClick}>
+      <GlobalStyles />
       <Modal
         disabled={disabled}
         modal={modal}
@@ -112,7 +126,7 @@ function App() {
         disabled={disabled}
         setBreatheInstructions={setBreatheInstructions}
       />
-    </div>
+    </AppStyles>
   );
 }
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { startStep0, startStep1, startStep2, startStep3 } from "../utils/steps";
-import "./instructions.css";
+import { InstructionsStyles } from "./Instructions.styles";
 
 export const Instructions = ({
   breatheInstructions,
@@ -88,8 +88,8 @@ export const Instructions = ({
     time
   ]);
   return (
-    <div className="instructions">
+    <InstructionsStyles>
       <p className="instructions__p">{breatheInstructions.instruction}</p>
-    </div>
+    </InstructionsStyles>
   );
 };
